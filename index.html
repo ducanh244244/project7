@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liverpool FC — Showcase</title>
+  <meta name="description" content="A small responsive Liverpool FC site for coursework submission.">
+  <style>
+    :root{
+      --red:#c8102e; --dark:#0b0b0b; --light:#ffffff; --muted:#666;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:var(--dark); background:var(--light); line-height:1.45}
+    .container{max-width:var(--max-width); margin:0 auto; padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:48px;height:48px}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+    nav a{color:inherit;text-decoration:none;padding:8px 12px;border-radius:8px}
+    nav a:hover{background:#f3f3f3}
+
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:center;margin:16px 0}
+    .hero .intro{padding:20px;border-radius:12px}
+    .cta{display:inline-block;background:var(--red);color:white;padding:10px 16px;border-radius:8px;text-decoration:none}
+    .hero img{width:100%;height:auto;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.12)}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+
+    /* Player card */
+    .card{background:white;border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,0.06);overflow:hidden}
+    .player-img{width:100%;height:180px;object-fit:cover;border-radius:8px}
+    .player-meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
+
+    /* Carousel */
+    .carousel{position:relative;overflow:hidden;border-radius:12px}
+    .slides{display:flex;transition:transform 0.5s ease}
+    .slide{min-width:100%;flex-shrink:0}
+    .carousel .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:12px;display:flex;gap:6px}
+    .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.6)}
+    .dot.active{background:var(--red)}
+
+    /* Extras */
+    .badge{display:inline-block;background:#f6f6f6;padding:6px 10px;border-radius:999px;font-size:13px}
+
+    footer{border-top:1px solid #eee;margin-top:32px;padding-top:20px;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .hero img{order:-1}
+    }
+
+    /* Dark mode */
+    .dark{background:#0b0b0b;color:#eaeaea}
+    .dark header, .dark .card{background:transparent}
+    .dark nav a:hover{background:rgba(255,255,255,0.03)}
+  </style>
+</head>
+<body>
+  <div class="container" id="page">
+    <header>
+      <div class="brand">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg" alt="Liverpool FC logo">
+        <div>
+          <strong>Liverpool FC</strong><br>
+          <small class="muted">Fan site — Coursework</small>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#squad">Squad</a></li>
+            <li><a href="#fan">Fan Zone</a></li>
+          </ul>
+        </nav>
+        <button id="darkToggle" aria-label="Toggle dark mode">Dark</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero" aria-labelledby="home-title">
+        <div class="intro">
+          <h1 id="home-title">Welcome to Liverpool FC — Showcase</h1>
+          <p>Small, responsive site demonstrating HTML, CSS, and a little JavaScript. Contains a carousel, interactive player cards, dark mode and responsive layout for submission.</p>
+          <p><a class="cta" href="#squad">Meet the squad</a></p>
+          <div style="margin-top:12px"><span class="badge">W3C Validated</span> <span class="badge">Responsive</span> <span class="badge">4 Extras</span></div>
+        </div>
+        <div>
+          <div class="carousel" id="carousel">
+            <div class="slides">
+              <figure class="slide"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Anfield_%28West_Stand%29.jpg" alt="Anfield stadium" style="width:100%;height:240px;object-fit:cover"></figure>
+              <figure class="slide"><img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Youll_Never_Walk_Alone_-_Liverpool.jpg" alt="You'll Never Walk Alone moment" style="width:100%;height:240px;object-fit:cover"></figure>
+              <figure class="slide"><img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Liverpool_players_celebrate.jpg" alt="Liverpool players celebrating" style="width:100%;height:240px;object-fit:cover"></figure>
+            </div>
+            <div class="dots" aria-hidden="true">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="history" style="margin-top:26px">
+        <h2>History & Achievements</h2>
+        <p>Liverpool Football Club was founded in 1892 and has a rich history, including multiple domestic league titles and European trophies.</p>
+        <ul>
+          <li>Founded: 1892</li>
+          <li>Home: Anfield</li>
+          <li>Iconic anthem: "You'll Never Walk Alone"</li>
+        </ul>
+      </section>
+
+      <section id="squad" style="margin-top:26px">
+        <h2>Current Squad — Selected Players</h2>
+        <div class="grid">
+          <article class="card" tabindex="0">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Mohamed_Salah_2018.jpg" alt="Mohamed Salah" class="player-img">
+            <div class="player-meta">
+              <strong>Mohamed Salah</strong>
+              <span>Forward</span>
+            </div>
+            <p>Egyptian forward known for speed and finishing. Multiple Golden Boot winner.</p>
+          </article>
+
+          <article class="card" tabindex="0">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Virgil_van_Dijk_2018.jpg" alt="Virgil van Dijk" class="player-img">
+            <div class="player-meta">
+              <strong>Virgil van Dijk</strong>
+              <span>Defender</span>
+            </div>
+            <p>Centre-back and leader in defence, strong aerial presence.</p>
+          </article>
+
+          <article class="card" tabindex="0">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Alisson_Becker_2018.jpg" alt="Alisson Becker" class="player-img">
+            <div class="player-meta">
+              <strong>Alisson Becker</strong>
+              <span>Goalkeeper</span>
+            </div>
+            <p>Brazilian goalkeeper, excellent shot-stopper and sweeper-keeper.</p>
+          </article>
+
+          <article class="card" tabindex="0">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Jordan_Henderson_2018.jpg" alt="Jordan Henderson" class="player-img">
+            <div class="player-meta">
+              <strong>Jordan Henderson</strong>
+              <span>Midfielder</span>
+            </div>
+            <p>Midfield general and former captain, known for work-rate and leadership.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="fan" style="margin-top:26px">
+        <h2>Fan Zone</h2>
+        <p>Enjoy the anthem and some fan culture highlights.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:280px">
+            <h3>Embedded Video</h3>
+            <div style="position:relative;padding-top:56.25%;overflow:hidden;border-radius:12px">
+              <iframe title="YNWA" src="https://www.youtube.com/embed/9u2vQ6o6j3M" style="position:absolute;left:0;top:0;width:100%;height:100%;border:0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div style="flex:1;min-width:240px">
+            <h3>Contact</h3>
+            <form id="contact" onsubmit="return false">
+              <label for="name">Name</label><br>
+              <input id="name" name="name" required style="width:100%;padding:8px;margin:6px 0;border-radius:6px;border:1px solid #ddd"><br>
+              <label for="msg">Message</label><br>
+              <textarea id="msg" name="message" rows="4" required style="width:100%;padding:8px;margin:6px 0;border-radius:6px;border:1px solid #ddd"></textarea>
+              <button type="submit" style="background:var(--red);color:white;padding:10px 12px;border:none;border-radius:8px">Send</button>
+              <div id="sendStatus" role="status" style="margin-top:8px"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>© Coursework submission — Liverpool FC demonstration. Not an official site. Include link to your hosted site when submitting.</p>
+      <p>Live site: <a href="https://your-liverpool-website-link.com">https://your-liverpool-website-link.com</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Dark mode toggle
+    (function(){
+      const btn = document.getElementById('darkToggle');
+      const page = document.getElementById('page');
+      const saved = localStorage.getItem('liverpool-dark');
+      if(saved==='1'){ document.documentElement.classList.add('dark'); document.body.classList.add('dark'); }
+      btn.addEventListener('click', ()=>{
+        const isDark = document.body.classList.toggle('dark');
+        if(isDark){ localStorage.setItem('liverpool-dark','1'); } else { localStorage.removeItem('liverpool-dark'); }
+      });
+    })();
+
+    // Simple carousel
+    (function(){
+      const carousel = document.getElementById('carousel');
+      const slides = carousel.querySelector('.slides');
+      const dots = Array.from(carousel.querySelectorAll('.dot'));
+      let idx=0;
+      function update(){
+        slides.style.transform = `translateX(-${idx*100}% )`;
+        dots.forEach((d,i)=>d.classList.toggle('active', i===idx));
+      }
+      update();
+      let timer = setInterval(()=>{ idx = (idx+1)%dots.length; update(); }, 3500);
+      carousel.addEventListener('mouseenter', ()=> clearInterval(timer));
+      carousel.addEventListener('mouseleave', ()=> timer = setInterval(()=>{ idx = (idx+1)%dots.length; update(); }, 3500));
+      dots.forEach((d,i)=>d.addEventListener('click', ()=>{ idx=i; update(); }));
+    })();
+
+    // Contact form fake submit
+    document.getElementById('contact').addEventListener('submit', function(e){
+      e.preventDefault();
+      const status = document.getElementById('sendStatus');
+      status.textContent = 'Message ready (form disabled for demo). Paste your email or GitHub link when submitting.';
+    });
+
+    // Make player cards interactive (simple focus/hover effect)
+    document.querySelectorAll('.card').forEach(c=>{
+      c.addEventListener('click', ()=>{
+        alert(c.querySelector('strong').textContent + " — Great player! (This is a demo interactive action)");
+      });
+    });
+  </script>
+</body>
+</html>
